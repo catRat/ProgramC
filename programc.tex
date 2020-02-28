@@ -270,53 +270,255 @@ end
 有了以上写程序的基础，本章对程序中最基本的成分作必要的介绍。
 \subsection{常量和变量}
 在计算机高级语言中，数据有两种表现形式：常量和变量。
-\subsubsection{常量}
-C的运算符
-\begin{itemize}
-	\item 算术运算符	\verb|+- * / ++ --|
-	\item 关系运算符	\verb|> < == >= <= !=|
-	\item 逻辑运算符 	\verb|! && |
-	\item 位运算符		\verb|<<>>~ |
-	\item 赋值运算符=及其扩展赋值运算符
-	\item 条件运算符	\verb|?:|
-	\item 都好运算符	\verb|,|
-	\item 指针运算符	\verb|* &|
-	\item 求字节数运算符	sizeof
-	\item 强制类型转换运算符	(类型)
-	\item 成员运算符	\verb|. ->|
-	\item 下表运算符	\verb|[]|
-	\item 其他  ()
-\end{itemize}
+\begin{enumerate}
+	\item 常量
+
+		在程序运行过程中，其值不能被改变的两称为常量。
+
+		常用的常量有以下几类：
+		\begin{enumerate}
+			\item 整型常量。
+			\item 实型常量。
+			\item 字符常量。
+			\item 字符串常量。
+			\item 符号常量。
+		\end{enumerate}
+	\item 变量
+
+		变量代表一个有名字、具有特定属性的一个存储单元。它用来存放数据，也就是存放变量的值。在程序运行期间，变量的值是可以改变的。
+
+		变量必须先定义，后使用。在定义时制定改变量的名字和类型。一个变量应该有一个名字，以便被引用。
+	\item 常变量
+
+		C99允许使用常变量，如
+		\begin{lslisting}
+			const int a = 3;
+		\end{lslisting}
+		表示a被定义为一个整形变量，指定其值为3,而且在变量存在期间其值不能改变。
+	\item 标志符
+
+		在计算机高级语言中，用来对变量、符号常量名、函数、数组、类型等命名的有效字符序列统称为标识符（identifier）。
+\end{enumerate}
+\subsection{数据类型}
+C语言要求在定义所有变量的时候要制定变量的类型。
+
+所谓的类型，就是对数据分配存储单元的安排，包括存储单元的长度以及数据的存储形式。不同的类型分配不同的长度和存储形式。
+
+\subsection{整形类型}
+\begin{enumerate}
+	\item 整型数据的分类
+
+		本节介绍基本的整形类型。
+		
+		\begin{enumerate}
+			\item int
+			\item short int
+			\item long int
+			\item long long int
+		\end{enumerate}
+	\item 整型变量的符号属性
+\end{enumerate}
+\subsection{字符型数据}
+由于字符是按其代码形式存储的，因此C99把字符型数据作为整数类型的一种。但是，字符型数据在使用上有自己的特点，因此把它单独列为一节来介绍。
+\begin{enumerate}
+	\item 字符与字符代码
+	\item 字符变量
+\end{enumerate}
+\subsection{浮点型数据}
+浮点型数据用来表示具有小数点的实数。
+\begin{enumerate}
+	\item float
+	\item double
+	\item long double
+\end{enumerate}
+\subsection{怎样确定常量的类型}
+怎样确定常量的类型呢？从常量的表示形式即可以判断其类型。
+
+整型常量
+
+浮点型常量
+\subsection{运算符和表达式}
+几乎没一个程序都需要进行计算，对数据进行加工处理，否则程序就没有意义了。要进行运算，就需规定可以是使用的运算符。C语言的运算符范围很宽，把除了控制语句和输入输出以外的几乎所有的基本操作都作为运算符处理，如方括号，点号。
+\begin{enumerate}
+	\item 基本的算术运算符
+	\item 自增、自减运算符
+	\item 算术表达式和运算符的优先级与结合性
+
+		用运算符和括号将运算对象（操作数）链接起来、符合C语法规则的式子，成为C算术表达式。
+	\item 不同类型数据间的混合运算
+
+		这些转换是编译系统自动完成的，用户不必过问。
+	\item 强制类型转换运算符
+	\item C运算符
+
+		\begin{itemize}
+			\item 算术运算符	\verb|+- * / ++ --|
+			\item 关系运算符	\verb|> < == >= <= !=|
+			\item 逻辑运算符 	\verb|! && |
+			\item 位运算符		\verb|<<>>~ |
+			\item 赋值运算符=及其扩展赋值运算符
+			\item 条件运算符	\verb|?:|
+			\item 都好运算符	\verb|,|
+			\item 指针运算符	\verb|* &|
+			\item 求字节数运算符	sizeof
+			\item 强制类型转换运算符	(类型)
+			\item 成员运算符	\verb|. ->|
+			\item 下表运算符	\verb|[]|
+			\item 其他  ()
+		\end{itemize}
+\end{enumerate}
+
+例 给定一个大写字母，要求用小写字母输出。
+
 
 \section{C语句}
+\subsection{C语句的作用和分类}
+在前面的例子可以看到：一个函数包含声明部分和执行部分，执行部分是由语句组成的，语句的作用是想计算机系统发出操作指令，要求执行相应的操作。一个C语句经过编译后产生若干条机器指令。声明部分不是语句，它不产生机器指令，只是对有关数据的声明。
 
-\subsection{控制语句}
-\begin{itemize}
-	\item if()...else
-	\item 2)for()...
-	\item while()...
-	\item do...while
-	\item continue
-	\item break
-	\item switch
-	\item return 
-	\item goto
-\end{itemize}
-\subsection{函数调用语句}
-\subsection{表达式语句}
-\subsection{空语句}
-\subsection{复合语句}
+C程序的结构可以用图表示。即一个C程序可以由若干个源程序文件组成，一个源文件可以由若干个函数和预处理指令以及全局变量声明部分组成。一个函数由数据声明部分和执行语句组成。
+
+C语句分为以下5类。
+\begin{enumerate}
+	\item 控制语句
+	\begin{itemize}
+		\item if()...else
+		\item 2)for()...
+		\item while()...
+		\item do...while
+		\item continue
+		\item break
+		\item switch
+		\item return 
+		\item goto
+	\end{itemize}
+	\item 函数调用语句。函数调用语句由一个函数调用加上一个分号构成。
+	\item 表达式语句。
+	\item 空语句。
+	\item 复合语句。
+\end{enumerate}
+\subsection{最基本的语句——赋值语句}
+在C程序中，最常用的语句是：赋值语句和输入输出语句。其中最基本的是赋值语句。程序中的计算功能大部分是由赋值语句实现的。
+
+例 给出三角形的长，求三角形的面积。
+
+\section{数据的输入输出}
+\subsection{输入输出举例}
+前面已经看到了利用printf函数进行数据输出的程序，现在再介绍一个包含输入和输出的程序。
+
+例 求$ax^2 + bx + c = 0$方程的根。$a, b, c$由键盘输入，设$b^2 - 4ac > 0$。
+\subsection{有关数据输入输出的概念}
+\subsection{用printf函数输出数据}
+\subsection{用scanf函数输入数据}
+\subsection{字符数据的输入输出}
+除了可以用printf函数和scanf函数输出和输入字符外，C函数库还提供了一些专门用于输入和输出字符的函数。他们是很容易理解和使用的。
+\begin{enumerate}
+	\item putchar
+	\item getchar
+\end{enumerate}
 
 \section{习题}
+\begin{enumerate}
+	\item 写两个函数，分别求两个整数的最大公约数和最小公倍数，用主函数调用这两个函数，并输出结果。两个整数由键盘输入。
+	\item 求方程 $ax^2 + bx + c = 0$ 的根，用3个函数分别求当：$b^2 - 4ac$ 大于0、等于0和小于0时的根并输出结果。
+	\item 写一个判素数的函数，在主函数输入一个整数，输出是否为素数的信息。
+	\item 写一个函数，使给定一个$3 \times 3$的二维整型数组转置，即行列互换。
+	\item 写一个函数，使输入的一个字符串按反序存放，在主函数中输入和输出字符串。
+\end{enumerate}
 
-\section{习题}
+\chapter{选择结构程序设计}
+第3张介绍了顺序结构程序设计。在顺序结构中，各语句是按自上而下的顺序执行的，执行上一个语句就自动执行下一个语句，是无条件的。实际上……需要根据某个条件是否满足来决定是否执行指定的操作任务，或者从给定的两种或多种操作选择其一。
+\section{选择结构和条件判断}
+\section{用if语句实现选择结构}
+\section{关系运算符和关系表达式}
+\subsection{关系表达式}
+\section{逻辑运算符和逻辑表达式}
+\subsection{逻辑运算符机器优先次序}
+\subsection{逻辑表达式}
+\subsection{逻辑型变量}
+如果源文件中用\verb|#include<stdbool.h>|，那么上面的程序段可以写成……
+\section{条件运算符和条件表达式}
+\section{选择结构的嵌套}
+\section{用switch语句实现多分支选择结构}
+\section{选择结构程序综合举例}
 
-1. 写两个函数，分别求两个整数的最大公约数和最小公倍数，用主函数调用这两个函数，并输出结果。两个整数由键盘输入。
+\chapter{循环结构程序设计}
+\section{用while语句实现循环}
+\section{用do whiel 语句实现循环}
+\section{用for语句实现循环}
+\section{循环的嵌套}
+\section{几种循环的比较}
+\section{改变循环执行的状态}
+\subsection{用break语句提前终止循环}
+\subsection{用continue语句提前结束本次循环}
+\subsection{break语句和continue语句的区别}
+\section{循环程序举例}
+例 用$\frac{\pi}{4} =1 - \frac{1}{3} + \frac{1}{5}- \frac{1}{7} + \cdots$公式求 $\pi$的近似值，直到发现某一项的绝对值小于 $10^-6$为止。
 
-2. 求方程 $ax^2 + bx + c = 0$ 的根，用3个函数分别求当：$b^2 - 4ac$ 大于0、等于0和小于0时的根并输出结果。
 
-3. 写一个判素数的函数，在主函数输入一个整数，输出是否为素数的信息。
+\chapter{利用数组处理批量数据}
 
-4. 写一个函数，使给定一个$3 \times 3$的二维整型数组转置，即行列互换。
+\section{怎样定义和引用一维数组}
+一维数组是数组中最简单的，它的元素只需要用数组名加一个下标……
+\subsection{这样定义一维数组}
+\subsection{怎样引用一维数组元素}
+\subsection{一维数组的初始化}
+\subsection{一维数组程序举例}
+例 用数组处理求Fibonacci数列问题。
+\section{怎样定义和引用二维数组}
+\section{字符数组}
 
-5. 写一个函数，使输入的一个字符串按反序存放，在主函数中输入和输出字符串。
+
+\chapter{用函数实现模块化程序设计}
+\section{为什么要用函数}
+\section{怎么定义函数}
+\section{调用函数}
+\section{对被调用函数的声明和函数原型}
+\section{函数的嵌套调用}
+\section{函数的递归调用}
+\section{数组作为函数参数}
+\subsection{数组元素作为函数实参}
+\subsection{数组名作函数参数}
+\subsection{多维数组名作函数参数}
+\section{局部变量和全局变量}
+\subsection{局部变量}
+\subsection{全局变量}
+\section{变量的存储方式和生存期}
+\subsection{动态存储方式与静态存储方式}
+\subsection{局部变量的存储类别}
+\subsection{全局变量的存储类别}
+\section{关于变量的声明和定义}
+\section{内部函数和外部函数}
+
+
+\chapter{善于利用指针}
+指针是C语言中一个重要的概念，也是C语言的一个重要特色。正确而灵活地运用它，可以使程序简洁、紧凑、高效。没一个学习和使用C语言的人，都应该深入地学习和掌握指针。
+
+\section{指针是什么}
+\section{指针变量}
+\section{通过指针引用数组}
+\section{通过指针引用字符串}
+\section{指向函数的指针}
+\section{返回指针值的函数}
+\section{指针数组和多重指针}
+\section{动态内存分配与指向它的指针变量}
+
+\chapter{用户自己建立数据类型}
+C语言提供了一些由系统已定义好的数据类型，如：int，float，char等，用户可以在程序中用它们定义变量，解决一般的问题，但是人们要处理的问题往往比较复杂，只有系统提供的类型还不能满足应用的要求，C语言允许用户根据需要自己建立一些数据类ixng，用它来定义变量。
+\section{定义和使用结构体变量}
+\subsection{自检建立结构体类型}
+\subsection{定义结构提类型变量}
+\subsection{结构体变量的初始化和引用}
+\section{使用结构提数组}
+\subsection{定义结构提数组}
+\section{结构体指针}
+\subsection{指向结构提的指针}
+\subsection{指向结构提数组的指针}
+\subsection{用结构提变量和结构提变量的指针作函数参数}
+\section{用指针处理链表}
+\section{共用体类型}
+\section{使用枚举类型}
+\section{用typedef声明新类型名}
+
+\chapter{对文件的输入输出}
+\section{C文件的有关基本知识}
+\subsection{什么是文件}
