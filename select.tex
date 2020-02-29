@@ -1,0 +1,105 @@
+\chapter{选择结构程序设计}
+第3张介绍了顺序结构程序设计。在顺序结构中，各语句是按自上而下的顺序执行的，执行上一个语句就自动执行下一个语句，是无条件的。实际上……需要根据某个条件是否满足来决定是否执行指定的操作任务，或者从给定的两种或多种操作选择其一。
+\section{选择结构和条件判断}
+由于程序处理问题的需要，在大多数程序中都会包含选择结构，需要在进行下一个操作之前先进行条件判断。
+
+C语言有两种选择语句：（1）if语句，用来实现两个分支选择结构；（2）switch语句，用来实现多分支的选择结构。本书先介绍用if语句实现双分支选择结构，这是很容易理解的，然后在此基础上介绍怎样用switch语句实现多分支选择结构。
+
+例 求$a x^2 + bx + c=0$方程的根。由键盘输入a, b, c。假设a, b, c,的值任意，并不保证$b^2 -4ac >0$。
+\section{用if语句实现选择结构}
+\subsection{用if语句处理选择结构举例}
+从例可以看到：在C语言中选择结构主要是用if语句实现的。为了进一步了解if语句的应用，下面再举两个简单的例子。
+
+例 输入两个实数，按代数值由大到小的顺序输出这两个数。
+
+例 输入3个数， a， b， c，要求按由小到大的顺序输出。
+\subsection{if语句的一般形式}
+通过上面3个简单的例子，可以i初步知道怎样使用if语句去实现选择结构。
+
+if语句的一般形式如下：
+\begin{lstlisting}
+if(express) statement
+	[else statement]
+\end{lstlisting}
+if语句中的 express 可以是关系表达式、逻辑表达式，甚至是数值表达式。
+
+在上面if语句的一般形式中，放括号内的部分为可选的。
+
+语句可以是一个简单的语句，也可以是一个复合语句，还可以是另一个if语句。
+
+根据if语句的一般形式，if语句可以写成不同的形式，最常用的有以下3种形式：
+
+\begin{enumerate}
+	\item if() statement1
+	\item if() statement1 else statement2
+	\item if() statement1 else if() statement2 else if() statement3 ... else statement n
+\end{enumerate}
+\section{关系运算符和关系表达式}
+在例程序中可以看到，在if语句中对关系表达式$disc>0$进行判断。其中“>”是一个比较符，用来对两个数值进行比较。在C语言中，比较符称为关系运算符。所谓ie“关系运算”就是“比较运算”，将两个数值进行比较，判断其比较的结果是否符合给定的条件。
+\subsection{关系运算符及其优先次序}
+C语言提供6中关系运算符：
+\begin{enumerate}
+	\item <
+	\item <=
+	\item >
+	\item >=
+	\item ==
+	\item !=
+\end{enumerate}
+关于优先次序：
+\subsection{关系表达式}
+用关系运算符将两个数值或数值表达式连接起来的式子，称为关系表达式。例如，下面都是合法的关系表达式：$a > b, a + b > b + c, (a = 3) > ( b = 5)$。关系表达式的值是一个逻辑之。
+\section{逻辑运算符和逻辑表达式}
+有时要求判断的条件不是一个简单的条件，而是由几个给定简单条件组合的复合条件。
+
+用逻辑运算符将关系表达式或其他逻辑量连接起来的式子就是逻辑表达式。
+\subsection{逻辑运算符机器优先次序}
+有3种逻辑运算符：and，or，not。在C语言中不能在程序中直接用and， or，not作为逻辑运算符，而是用其他符合代替。
+\begin{itemize}
+	\item \verb|&&|
+	\item ||
+	\item !
+\end{itemize}
+\subsection{逻辑表达式}
+如前所述，逻辑表达式的值应该是一个逻辑量“真”或“假”。C语言编译系统在表达逻辑运算结果时，以数值1代表“真”以0代表“假”。
+\subsection{逻辑型变量}
+如果源文件中用\verb|#include<stdbool.h>|，那么上面的程序段可以写成……
+\section{条件运算符和条件表达式}
+有一种if语句，当被判别的表达式的值为“真”或“假”时，都执行一个赋值语句且想同一个变量赋值。如：
+\begin{lstlisting}
+if(a > b)
+	max = a;
+else
+	max = b;
+\end{lstlisting}
+……可以吧上面的if语句改写为
+\begin{lstlisting}
+max = (a > b) ? a:b;
+\end{lstlisting}
+负值号的右侧“\verb|(a>b)?a:b|”是一个“条件表达式”。“？”是条件运算符。
+
+条件表达式的一般形式为
+\begin{lstlisting}
+表达式1?表达式2:表达式3
+\begin{lstlisting}
+\section{选择结构的嵌套}
+在if语句中又包含一个或多个if语句称为iif语句的嵌套（nest）。本章中if语句的第3中形式就属于if语句的嵌套，其一般形式如下：
+\begin{lstlisting}
+if()
+  if() statement
+  else statement
+else
+  if() statement
+  else statement
+\end{lstlisting}
+\section{用switch语句实现多分支选择结构}
+if语句只有两个分支可供选择，而实际问题中常常需要用到多分支的选择。例如，学生成绩分类，人口统计分类，工资统计分类，银行存款分类等……C语言提供switch语句直接处理多分支选择。
+
+switch语句是多分支选择语句。
+\section{选择结构程序综合举例}
+前面已经学习编写和分析过一些程序，下面再综合介绍几个包含选择结构的应用程序。
+
+例 写一个程序，判断是否为润年。
+
+例 求$ax^2 + bx + c = 0$方程的解。
+
