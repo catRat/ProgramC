@@ -30,9 +30,22 @@ if语句中的 express 可以是关系表达式、逻辑表达式，甚至是数
 根据if语句的一般形式，if语句可以写成不同的形式，最常用的有以下3种形式：
 
 \begin{enumerate}
-	\item if() statement1
-	\item if() statement1 else statement2
-	\item if() statement1 else if() statement2 else if() statement3 ... else statement n
+	\item \begin{lstlisting}
+		if() statement1
+		\end{lstlisting}
+	\item \begin{lstlisting}
+		if()
+			statement1
+		else
+			statement2
+	\end{lstlisting}
+	\item \begin{lstlisting}
+	if()		statement1
+	else if()	statement2
+	else if()	statement3
+	... 
+	else		statement n
+	\end{lstlisting}
 \end{enumerate}
 \section{关系运算符和关系表达式}
 在例程序中可以看到，在if语句中对关系表达式$disc>0$进行判断。其中“>”是一个比较符，用来对两个数值进行比较。在C语言中，比较符称为关系运算符。所谓ie“关系运算”就是“比较运算”，将两个数值进行比较，判断其比较的结果是否符合给定的条件。
@@ -81,17 +94,26 @@ max = (a > b) ? a:b;
 条件表达式的一般形式为
 \begin{lstlisting}
 表达式1?表达式2:表达式3
-\begin{lstlisting}
+\end{lstlisting}
+
 \section{选择结构的嵌套}
-在if语句中又包含一个或多个if语句称为iif语句的嵌套（nest）。本章中if语句的第3中形式就属于if语句的嵌套，其一般形式如下：
+在if语句中又包含一个或多个if语句称为if语句的嵌套（nest）。本章中if语句的第3中形式就属于if语句的嵌套，其一般形式如下：
 \begin{lstlisting}
 if()
-  if() statement
+  if() statement  //内嵌if
   else statement
 else
-  if() statement
+  if() statement  //内嵌if
   else statement
 \end{lstlisting}
+例 有一函数：
+\begin{equation} y = 
+	\begin{cases}
+		-1 & (x < 0) \\
+		0 & (x = 0) \\
+		1 & ( x > 0)
+	\end{cases}
+\end{equation}
 \section{用switch语句实现多分支选择结构}
 if语句只有两个分支可供选择，而实际问题中常常需要用到多分支的选择。例如，学生成绩分类，人口统计分类，工资统计分类，银行存款分类等……C语言提供switch语句直接处理多分支选择。
 
